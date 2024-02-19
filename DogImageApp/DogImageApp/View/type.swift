@@ -15,3 +15,10 @@ struct DogBreed {
     var name: String
     var images: [DogImage]
 }
+
+enum NetworkError: Error {
+    case invalidURL
+    case badHTTPResponse
+    case noData
+    case invalidData
+}

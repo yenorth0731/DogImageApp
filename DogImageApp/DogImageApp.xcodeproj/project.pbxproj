@@ -13,7 +13,7 @@
 		BB1302222B7F41E5005699B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1302202B7F41E5005699B8 /* Main.storyboard */; };
 		BB1302242B7F41E6005699B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB1302232B7F41E6005699B8 /* Assets.xcassets */; };
 		BB1302272B7F41E6005699B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1302252B7F41E6005699B8 /* LaunchScreen.storyboard */; };
-		BB13022F2B7F449F005699B8 /* FetchDogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13022E2B7F449F005699B8 /* FetchDogAPI.swift */; };
+		BB13022F2B7F449F005699B8 /* DogAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13022E2B7F449F005699B8 /* DogAPIManager.swift */; };
 		BB1302332B82E478005699B8 /* DogDetdetailViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1302322B82E478005699B8 /* DogDetdetailViewViewController.swift */; };
 		BB1302372B82EA9D005699B8 /* DogBreedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1302362B82EA9D005699B8 /* DogBreedCollectionViewCell.swift */; };
 		BB13023B2B82EDEA005699B8 /* DogBreedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13023A2B82EDEA005699B8 /* DogBreedViewController.swift */; };
@@ -29,7 +29,7 @@
 		BB1302232B7F41E6005699B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB1302262B7F41E6005699B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB1302282B7F41E6005699B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB13022E2B7F449F005699B8 /* FetchDogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDogAPI.swift; sourceTree = "<group>"; };
+		BB13022E2B7F449F005699B8 /* DogAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogAPIManager.swift; sourceTree = "<group>"; };
 		BB1302322B82E478005699B8 /* DogDetdetailViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDetdetailViewViewController.swift; sourceTree = "<group>"; };
 		BB1302362B82EA9D005699B8 /* DogBreedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB13023A2B82EDEA005699B8 /* DogBreedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DogBreedViewController.swift; path = ../DogBreedViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		BB1302302B7F44D4005699B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BB13022E2B7F449F005699B8 /* FetchDogAPI.swift */,
+				BB13022E2B7F449F005699B8 /* DogAPIManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 				BB13021B2B7F41E5005699B8 /* AppDelegate.swift in Sources */,
 				BB13023B2B82EDEA005699B8 /* DogBreedViewController.swift in Sources */,
 				BB1302332B82E478005699B8 /* DogDetdetailViewViewController.swift in Sources */,
-				BB13022F2B7F449F005699B8 /* FetchDogAPI.swift in Sources */,
+				BB13022F2B7F449F005699B8 /* DogAPIManager.swift in Sources */,
 				BB1302372B82EA9D005699B8 /* DogBreedCollectionViewCell.swift in Sources */,
 				BB13021D2B7F41E5005699B8 /* SceneDelegate.swift in Sources */,
 				BB13023D2B832E1C005699B8 /* type.swift in Sources */,
