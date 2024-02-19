@@ -1,61 +1,68 @@
 import UIKit
 
+
 class DogListViewController: UIViewController {
     var breeds: [String] = []
-
+    
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        fetchData() // 1. fetchData()メソッドの呼び出しを修正
-        // Do any additional setup after loading the view.
+        fetchData()
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDogBreed" {
+            if let destinationVC = segue.destination as? DogBreedViewController,
+               let selectedIndexPath = tableView.indexPathForSelectedRow {
+                let selectedBreed = breeds[selectedIndexPath.row]
+                destinationVC.selectedBreed = selectedBreed
+            }
+        }
     }
     
     func fetchData() {
         let urlString = "https://dog.ceo/api/breeds/list/all"
-
+        
         guard let requestUrl = URL(string: urlString) else {
+            print("Invalid URL")
             return
         }
         
-        let task = URLSession.shared.dataTask(with: requestUrl) { (data, res,error) in
+        let task = URLSession.shared.dataTask(with: requestUrl) { (data, response, error) in
             if let error = error {
                 print("Unexpected error: \(error.localizedDescription). ")
                 return
             }
-            //HTTPresエラー
-            if let res = res as? HTTPURLResponse {
-                if !(200...299).contains(res.statusCode) {
-                    print("Request Failed - Status Code: \(res.statusCode).")
-                    return
-                }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Request Failed")
+                return
             }
             
-            //データ型　JSONに
-            if let data = data {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                    if let breedsDict = json?["message"] as? [String: [String]] {
-                        // breeds配列にデータを追加
-                        self.breeds = Array(breedsDict.keys)
-                        
-                        // メインスレッドでテーブルビューをリロード
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    } else {
-                        print("jsonError :(String(describing: json))")
-                    }
-                } catch {
-                    print("Error")
-                }
-            } else {
-                print("Unexpected error.")
+            guard let data = data else {
+                print("No data received")
+                return
             }
-
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                if let breedsDict = json?["message"] as? [String: [String]] {
+                    self.breeds = Array(breedsDict.keys)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    print("Failed to parse JSON")
+                }
+            } catch {
+                print("Error parsing JSON: \(error.localizedDescription)")
+            }
         }
-        task.resume() // 2. タスクを再開
+        task.resume()
     }
 }
 

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vSj-Vk-74u"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eFc-vB-ING"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66R-Ue-F21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -36,13 +37,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="A2l-nw-cSj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="T6c-zT-sYg" style="IBUITableViewCellStyleDefault" id="A2l-nw-cSj">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A2l-nw-cSj" id="1Hu-GO-Cfj">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T6c-zT-sYg">
+                                                    <rect key="frame" x="20" y="0.0" width="334.66666666666669" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5mG-wB-BSm" kind="show" identifier="ShowDogBreed" id="GuV-U2-jfq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -60,27 +73,111 @@
                     </view>
                     <navigationItem key="navigationItem" id="r9X-t9-P7D"/>
                     <connections>
-                        <outlet property="tableView" destination="xfj-mU-Ev8" id="y9a-gr-CxU"/>
+                        <outlet property="tableView" destination="xfj-mU-Ev8" id="mY7-wo-cRO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="-18" y="4"/>
+        </scene>
+        <!--Dog Breed View Controller-->
+        <scene sceneID="ZEI-Vs-cpd">
+            <objects>
+                <viewController id="5mG-wB-BSm" customClass="DogBreedViewController" customModule="DogImageApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fwj-ud-j4q" customClass="DogBreedCollectionViewCell" customModule="DogImageApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XHk-wv-OAI">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TrY-at-Gro">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="VUs-Hd-Zic" customClass="DogBreedCollectionViewCell" customModule="DogImageApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YjR-gA-KGS">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-UR-dtD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="9IJ-UR-dtD" secondAttribute="height" multiplier="1:1" id="GrD-Bk-b4p"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9IJ-UR-dtD" firstAttribute="leading" secondItem="YjR-gA-KGS" secondAttribute="leading" id="MFY-Rt-v9J"/>
+                                                <constraint firstAttribute="trailing" secondItem="9IJ-UR-dtD" secondAttribute="trailing" id="pXk-vF-rMq"/>
+                                                <constraint firstAttribute="bottom" secondItem="9IJ-UR-dtD" secondAttribute="bottom" id="q5y-dg-AfE"/>
+                                                <constraint firstItem="9IJ-UR-dtD" firstAttribute="top" secondItem="YjR-gA-KGS" secondAttribute="top" id="wpy-Si-Alp"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="DogImages" destination="9IJ-UR-dtD" id="WCh-O2-IX3"/>
+                                            <segue destination="Ml0-MN-gv5" kind="show" identifier="showDetail" id="Yba-DA-APs"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jhx-Dd-8pG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XHk-wv-OAI" firstAttribute="trailing" secondItem="jhx-Dd-8pG" secondAttribute="trailing" id="MAG-C7-ks2"/>
+                            <constraint firstItem="XHk-wv-OAI" firstAttribute="top" secondItem="fwj-ud-j4q" secondAttribute="top" id="UK4-yu-fKg"/>
+                            <constraint firstItem="XHk-wv-OAI" firstAttribute="leading" secondItem="jhx-Dd-8pG" secondAttribute="leading" id="Yeq-Bi-Tzo"/>
+                            <constraint firstAttribute="bottom" secondItem="XHk-wv-OAI" secondAttribute="bottom" id="ZSK-wQ-obl"/>
+                            <constraint firstItem="XHk-wv-OAI" firstAttribute="centerX" secondItem="fwj-ud-j4q" secondAttribute="centerX" id="ami-Nm-ITe"/>
+                            <constraint firstItem="XHk-wv-OAI" firstAttribute="centerY" secondItem="fwj-ud-j4q" secondAttribute="centerY" id="slo-fA-4kV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="FMl-wB-HZz"/>
+                    <connections>
+                        <outlet property="CollectionView" destination="XHk-wv-OAI" id="vcR-Sf-ARm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTi-Wo-XOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826.71755725190837" y="3.5211267605633805"/>
         </scene>
         <!--second-->
         <scene sceneID="Aue-MR-wTh">
             <objects>
-                <viewController id="Ml0-MN-gv5" userLabel="second" sceneMemberID="viewController">
+                <viewController id="Ml0-MN-gv5" userLabel="second" customClass="DogDetdetailViewViewController" customModule="DogImageApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vB8-zq-F5F">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0dy-MJ-vw7">
+                                <rect key="frame" x="13" y="144" width="366" height="388"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-HB-ETq">
+                                        <rect key="frame" x="0.0" y="40" width="350" height="328"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="MJW-98-HN4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="35O-Lz-FSc"/>
+                    <connections>
+                        <outlet property="DogDetailImage" destination="hAR-HB-ETq" id="iJy-5w-kYC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4n-VF-16x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="4"/>
+            <point key="canvasLocation" x="1702" y="4"/>
         </scene>
     </scenes>
     <resources>
