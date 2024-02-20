@@ -21,7 +21,7 @@ class DogBreedViewController: UIViewController {
         CollectionView.dataSource = self
         CollectionView.delegate = self
         fetchImages(for: selectedBreed)
-        print(selectedBreed)
+//        print(selectedBreed)
 
         // Do any additional setup after loading the view.
     }

@@ -28,7 +28,9 @@ class DogAPIManager {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 if let breedsDict = json?["message"] as? [String: [String]] {
+                    print(breedsDict)
                     let breeds = breedsDict.map { DogBreed(name: $0.key, images: $0.value.map { DogImage(imageUrl: $0) }) }
+                    print(breeds)
                     completion(.success(breeds))
                 } else {
                     completion(.failure(NetworkError.invalidData))
@@ -41,16 +43,23 @@ class DogAPIManager {
     
     static func fetchImages(for breed: String, completion: @escaping (Result<[String], Error>) -> Void) {
         let urlString = "https://dog.ceo/api/breed/\(breed)/images"
-        print(urlString)
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            handleDataResponse(data: data, response: response, error: error, completion: completion)
+            handleDataResponse(data: data, response: response, error: error) { (result: Result<[String], Error>) in
+                switch result {
+                case .success(let imageUrls):
+                    completion(.success(imageUrls))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
         }.resume()
     }
+
     
     static func downloadImage(from url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
