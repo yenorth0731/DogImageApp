@@ -18,6 +18,7 @@
 		BB1302372B82EA9D005699B8 /* DogBreedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1302362B82EA9D005699B8 /* DogBreedCollectionViewCell.swift */; };
 		BB13023B2B82EDEA005699B8 /* DogBreedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13023A2B82EDEA005699B8 /* DogBreedViewController.swift */; };
 		BB13023D2B832E1C005699B8 /* type.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13023C2B832E1C005699B8 /* type.swift */; };
+		BB1302402B8442CA005699B8 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = BB13023F2B8442CA005699B8 /* AlamofireImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB1302402B8442CA005699B8 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +116,9 @@
 			dependencies = (
 			);
 			name = DogImageApp;
+			packageProductDependencies = (
+				BB13023F2B8442CA005699B8 /* AlamofireImage */,
+			);
 			productName = DogImageApp;
 			productReference = BB1302172B7F41E5005699B8 /* DogImageApp.app */;
 			productType = "com.apple.product-type.application";
@@ -142,6 +147,9 @@
 				Base,
 			);
 			mainGroup = BB13020E2B7F41E5005699B8;
+			packageReferences = (
+				BB13023E2B8442CA005699B8 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = BB1302182B7F41E5005699B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -392,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB13023E2B8442CA005699B8 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = exactVersion;
+				version = 4.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB13023F2B8442CA005699B8 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB13023E2B8442CA005699B8 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB13020F2B7F41E5005699B8 /* Project object */;
 }

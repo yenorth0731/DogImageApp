@@ -11,7 +11,6 @@ class DogListViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         fetchData()
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

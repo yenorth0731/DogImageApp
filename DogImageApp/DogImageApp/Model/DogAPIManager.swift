@@ -1,5 +1,6 @@
 import Foundation
 
+
 class DogAPIManager {
     
     static func fetchData(completion: @escaping ([String]?, Error?) -> Void) {

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class DogBreedViewController: UIViewController {
 
@@ -20,7 +22,8 @@ class DogBreedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         CollectionView.dataSource = self
-        CollectionView.delegate = self
+//        CollectionView.delegate = self
+        navigationItem.title = selectedBreed
 
 
         fetchImages(for: selectedBreed)
@@ -29,14 +32,18 @@ class DogBreedViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == "showDetail",
-            let selectedImageUrl = sender as? String,
-            let destinationVC = segue.destination as? DogDetdetailViewViewController {
-             destinationVC.imageUrl = selectedImageUrl
-         }
-     }
-    
-    
+        if segue.identifier == "showDetail" {
+            if let selectedIndexPath = CollectionView.indexPathsForSelectedItems?.first,
+               let destinationVC = segue.destination as? DogDetdetailViewViewController {
+                let selectedImageUrl = breedImages[selectedIndexPath.item]
+                destinationVC.imageUrl = selectedImageUrl
+                destinationVC.selectedBreed = self.selectedBreed
+                //private使ったら
+                //navigationtitleの値ってどうする
+            }
+        }
+    }
+
     func fetchImages(for breed: String) {
         DogAPIManager.fetchImages(for: breed) { [weak self] result in
             switch result {
@@ -67,25 +74,9 @@ extension DogBreedViewController: UICollectionViewDataSource {
         let imageUrlString = breedImages[indexPath.item]
         if let imageUrl = URL(string: imageUrlString) {
             // 画像を非同期でダウンロードして表示
-            DispatchQueue.global().async {
-                if let imageData = try? Data(contentsOf: imageUrl),
-                   let image = UIImage(data: imageData) {
-                    DispatchQueue.main.async {
-                        cell.configure(with: image)
-                    }
-                }
-            }
+            cell.DogImages.af.setImage(withURL: imageUrl)
         }
         
         return cell
-    }
-    
-}
-
-extension DogBreedViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedImageUrl = breedImages[indexPath.item]
-        print("Selected Image URL: \(selectedImageUrl)") // デバッグ用にURLをプリント
-        performSegue(withIdentifier: "showDetail", sender: selectedImageUrl)
     }
 }
