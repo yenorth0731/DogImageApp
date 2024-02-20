@@ -38,33 +38,17 @@ class DogBreedViewController: UIViewController {
     
     
     func fetchImages(for breed: String) {
-        let urlString = "https://dog.ceo/api/breed/\(breed)/images"
-        guard let requestUrl = URL(string: urlString) else {
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: requestUrl) { [weak self] (data, response, error) in
-            guard let data = data, error == nil else {
-                print("Error: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                if let imageUrls = json?["message"] as? [String] {
-                    self?.breedImages = imageUrls
-                    
-//                    print("Fetched breedImages: \(self?.breedImages ?? [])") // 画像URLの配列が入ってる
-
-                    DispatchQueue.main.async {
-                        self?.CollectionView.reloadData()
-                    }
+        DogAPIManager.fetchImages(for: breed) { [weak self] result in
+            switch result {
+            case .success(let imageUrls):
+                self?.breedImages = imageUrls
+                DispatchQueue.main.async {
+                    self?.CollectionView.reloadData()
                 }
-            } catch {
-                print("Error parsing JSON: \(error.localizedDescription)")
+            case .failure(let error):
+                print("Error fetching images: \(error)")
             }
         }
-        task.resume()
     }
 
 }

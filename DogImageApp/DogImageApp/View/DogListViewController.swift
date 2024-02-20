@@ -25,44 +25,19 @@ class DogListViewController: UIViewController {
     }
     
     func fetchData() {
-        let urlString = "https://dog.ceo/api/breeds/list/all"
-        
-        guard let requestUrl = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: requestUrl) { (data, response, error) in
+        DogAPIManager.fetchData { [weak self] (breeds, error) in
             if let error = error {
-                print("Unexpected error: \(error.localizedDescription). ")
+                print("Error: \(error)")
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                print("Request Failed")
-                return
-            }
-            
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                if let breedsDict = json?["message"] as? [String: [String]] {
-                    self.breeds = Array(breedsDict.keys)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    print("Failed to parse JSON")
+            if let breeds = breeds {
+                self?.breeds = breeds
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
                 }
-            } catch {
-                print("Error parsing JSON: \(error.localizedDescription)")
             }
         }
-        task.resume()
     }
 }
 
