@@ -155,29 +155,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0dy-MJ-vw7">
-                                <rect key="frame" x="13" y="144" width="366" height="388"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvg-VC-Rgi">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-HB-ETq">
-                                        <rect key="frame" x="0.0" y="40" width="350" height="328"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                                <viewLayoutGuide key="contentLayoutGuide" id="lK3-z5-XCo"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="l5s-3a-Krh"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MJW-98-HN4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="35O-Lz-FSc"/>
                     <connections>
-                        <outlet property="DogDetailImage" destination="hAR-HB-ETq" id="iJy-5w-kYC"/>
+                        <outlet property="scrollView" destination="wvg-VC-Rgi" id="AJN-X3-Bc2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4n-VF-16x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="4"/>
+            <point key="canvasLocation" x="1701.5267175572519" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

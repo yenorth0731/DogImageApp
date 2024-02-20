@@ -1,29 +1,18 @@
-//
-//  DogDetdetailViewViewController.swift
-//  DogImageApp
-//
-//  Created by spark-01 on 2024/02/19.
-//
-
 import UIKit
 import Alamofire
 import AlamofireImage
 
-class DogDetdetailViewViewController: UIViewController {
-
-    @IBOutlet weak var DogDetailImage: UIImageView!
+class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var imageUrl: String?
-    var selectedBreed: String = "" // 犬種の名前を格納するプロパティ
-
+    var selectedBreed: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(selectedBreed)
         navigationItem.title = selectedBreed
-
-        if let imageUrl = imageUrl, let url = URL(string: imageUrl) {
-            DogDetailImage.af.setImage(withURL: url)
-        }
+        //画像実装
     }
-}
     
-
+}

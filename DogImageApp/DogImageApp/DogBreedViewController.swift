@@ -21,14 +21,11 @@ class DogBreedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CollectionView.dataSource = self
-//        CollectionView.delegate = self
         navigationItem.title = selectedBreed
-
-
         fetchImages(for: selectedBreed)
+        CollectionView.dataSource = self
+        CollectionView.delegate = self
 
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,6 +58,7 @@ class DogBreedViewController: UIViewController {
 }
 
 
+
 extension DogBreedViewController: UICollectionViewDataSource {
     
     
@@ -74,9 +72,32 @@ extension DogBreedViewController: UICollectionViewDataSource {
         let imageUrlString = breedImages[indexPath.item]
         if let imageUrl = URL(string: imageUrlString) {
             // 画像を非同期でダウンロードして表示
-            cell.DogImages.af.setImage(withURL: imageUrl)
+            cell.DogImages.af.setImage(withURL: imageUrl, completion: { response in
+                if case .success(let image) = response.result {
+                    // 画像をトリミングして正方形にする
+                    let scaledImage = image.af.imageAspectScaled(toFill: cell.DogImages.bounds.size)
+                    cell.DogImages.image = scaledImage
+                }
+            })
         }
         
         return cell
+    }
+    
+}
+
+extension DogBreedViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // セルの幅と高さを同じに設定することで、正方形のセルを作成する
+        let cellWidth = (collectionView.frame.width - 1) / 2 // 2枚の画像を表示するために、横幅を半分にする
+        return CGSize(width: cellWidth, height: cellWidth)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1 // セル間の水平方向の余白を1に設定する
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1 // セル間の垂直方向の余白を1に設定する
     }
 }
