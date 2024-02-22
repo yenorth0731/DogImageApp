@@ -11,8 +11,5 @@ class DogBreedCollectionViewCell: UICollectionViewCell {
 
     
     @IBOutlet weak var DogImages: UIImageView!
-    
-//    func configure(with image: UIImage) {
-//        DogImages.image = image
-//    }
+
 }

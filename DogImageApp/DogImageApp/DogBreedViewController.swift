@@ -35,8 +35,6 @@ class DogBreedViewController: UIViewController {
                 let selectedImageUrl = breedImages[selectedIndexPath.item]
                 destinationVC.imageUrl = selectedImageUrl
                 destinationVC.selectedBreed = self.selectedBreed
-                //private使ったら
-                //navigationtitleの値ってどうする
             }
         }
     }

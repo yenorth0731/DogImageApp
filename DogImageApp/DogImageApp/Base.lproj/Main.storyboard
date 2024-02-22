@@ -167,7 +167,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="35O-Lz-FSc"/>
                     <connections>
-                        <outlet property="scrollView" destination="wvg-VC-Rgi" id="AJN-X3-Bc2"/>
+                        <outlet property="scrollView" destination="wvg-VC-Rgi" id="f3G-VT-KTS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4n-VF-16x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

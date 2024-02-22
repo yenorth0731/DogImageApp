@@ -11,6 +11,7 @@ import Foundation
 struct DogImage {
     var imageUrl: String
 }
+
 struct DogBreed {
     var name: String
     var images: [DogImage]
