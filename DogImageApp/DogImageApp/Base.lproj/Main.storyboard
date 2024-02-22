@@ -140,7 +140,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FMl-wB-HZz"/>
                     <connections>
-                        <outlet property="CollectionView" destination="XHk-wv-OAI" id="vcR-Sf-ARm"/>
+                        <outlet property="collectionView" destination="XHk-wv-OAI" id="9m2-Me-j9j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTi-Wo-XOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -158,6 +158,19 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvg-VC-Rgi">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1D-1D-8aW">
+                                        <rect key="frame" x="300" y="618" width="85" height="89"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="⭐︎">
+                                            <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="50"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="favorite:" destination="Ml0-MN-gv5" eventType="touchUpInside" id="exX-IO-892"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="lK3-z5-XCo"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="l5s-3a-Krh"/>
                             </scrollView>

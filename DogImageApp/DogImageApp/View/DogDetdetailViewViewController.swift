@@ -2,11 +2,14 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+
+
 class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var imageUrl: String = ""
+    var dogImage: DogImage?
     var selectedBreed: String = ""
     var imageView = UIImageView()
     
@@ -27,8 +30,8 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setImageView() {
-        // 画像のダウンロードと設定
-        if let url = URL(string: imageUrl) {
+        guard let dogImage = dogImage else { return }
+        if let url = URL(string: dogImage.imageUrl) {
             imageView.contentMode = .scaleAspectFit
             imageView.af.setImage(withURL: url)
             imageView.frame = CGRect(origin: .zero, size: scrollView.bounds.size)
@@ -38,7 +41,6 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func doubleTapHandler(_ gesture: UITapGestureRecognizer) {
-        // ナビゲーションバーの表示/非表示をトグルする
         let isNavBarHidden = navigationController?.isNavigationBarHidden ?? false
         navigationController?.setNavigationBarHidden(!isNavBarHidden, animated: true)
         
@@ -59,4 +61,12 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
         zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
         return zoomRect
     }
+    
+    @IBAction func favorite(_ sender: Any) {
+        guard let dogImage = dogImage else { return }
+            // dogImageとselectedBreedの値を使用してお気に入り処理を行う
+            print("Favorite button tapped for dogImage: \(dogImage), breed: \(selectedBreed)")
+    }
+    
+    
 }

@@ -18,7 +18,8 @@ class DogListViewController: UIViewController {
             if let destinationVC = segue.destination as? DogBreedViewController,
                let selectedIndexPath = tableView.indexPathForSelectedRow {
                 let selectedBreed = breeds[selectedIndexPath.row]
-                destinationVC.selectedBreed = selectedBreed
+                let breed = DogBreed(name: selectedBreed, images: []) // ここで空の画像配列を作成する
+                destinationVC.breed = breed
             }
         }
     }
