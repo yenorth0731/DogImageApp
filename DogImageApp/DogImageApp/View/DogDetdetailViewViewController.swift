@@ -8,14 +8,19 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var dogImage: DogImage?
     var selectedBreed: String = ""
+    var imageUrl: URL?
     var imageView = UIImageView()
+    var isFavorite = false
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateButtonImage()
         scrollView.delegate = self
         scrollView.maximumZoomScale = 4.0
         scrollView.minimumZoomScale = 1.0
@@ -40,6 +45,20 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    @IBAction func toggleFavorite(_ sender: UIButton) {
+        // 現在のisFavoriteを反転
+        isFavorite.toggle()
+        
+        // ボタンのイメージを更新
+        updateButtonImage()
+    }
+    
+    // ボタンのイメージを更新するメソッド
+    func updateButtonImage() {
+        let image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        favoriteButton.setImage(image, for: .normal)
+    }
+    
     @objc func doubleTapHandler(_ gesture: UITapGestureRecognizer) {
         let isNavBarHidden = navigationController?.isNavigationBarHidden ?? false
         navigationController?.setNavigationBarHidden(!isNavBarHidden, animated: true)
@@ -61,12 +80,4 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
         zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
         return zoomRect
     }
-    
-    @IBAction func favorite(_ sender: Any) {
-        guard let dogImage = dogImage else { return }
-            // dogImageとselectedBreedの値を使用してお気に入り処理を行う
-            print("Favorite button tapped for dogImage: \(dogImage), breed: \(selectedBreed)")
-    }
-    
-    
 }
