@@ -214,37 +214,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvg-VC-Rgi">
-                                <rect key="frame" x="0.0" y="103" width="393" height="739"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1D-1D-8aW">
-                                        <rect key="frame" x="264" y="594" width="121" height="113"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="l5s-3a-Krh" firstAttribute="trailing" secondItem="L1D-1D-8aW" secondAttribute="trailing" id="SQd-0Z-OYM"/>
-                                    <constraint firstItem="l5s-3a-Krh" firstAttribute="bottom" secondItem="L1D-1D-8aW" secondAttribute="bottom" id="T9B-Lr-iPr"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1D-1D-8aW">
+                                <rect key="frame" x="256" y="716" width="121" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="favoriteButton:" destination="Ml0-MN-gv5" eventType="touchUpInside" id="6AL-CL-VHg"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvg-VC-Rgi">
+                                <rect key="frame" x="0.0" y="121" width="393" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="lK3-z5-XCo"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="l5s-3a-Krh"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MJW-98-HN4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="wvg-VC-Rgi" firstAttribute="centerY" secondItem="vB8-zq-F5F" secondAttribute="centerY" id="2zR-IM-BWk"/>
-                            <constraint firstItem="wvg-VC-Rgi" firstAttribute="leading" secondItem="MJW-98-HN4" secondAttribute="leading" id="74p-5F-nH9"/>
-                            <constraint firstItem="wvg-VC-Rgi" firstAttribute="centerX" secondItem="vB8-zq-F5F" secondAttribute="centerX" id="BzX-cQ-phG"/>
-                            <constraint firstItem="wvg-VC-Rgi" firstAttribute="trailing" secondItem="MJW-98-HN4" secondAttribute="trailing" id="CjE-3j-F6W"/>
-                            <constraint firstItem="wvg-VC-Rgi" firstAttribute="top" secondItem="MJW-98-HN4" secondAttribute="top" id="a8Q-Wh-pom"/>
-                            <constraint firstItem="wvg-VC-Rgi" firstAttribute="bottom" secondItem="MJW-98-HN4" secondAttribute="bottom" id="lxn-NQ-TRZ"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="35O-Lz-FSc"/>
                     <connections>
-                        <outlet property="favoriteButton" destination="L1D-1D-8aW" id="dAZ-cp-xC5"/>
                         <outlet property="scrollView" destination="wvg-VC-Rgi" id="f3G-VT-KTS"/>
                     </connections>
                 </viewController>
@@ -276,6 +266,7 @@
         <segue reference="SiR-nw-ZZT"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

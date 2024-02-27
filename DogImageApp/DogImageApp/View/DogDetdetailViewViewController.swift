@@ -8,26 +8,26 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var favoriteButton: UIButton!
     
     var dogImage: DogImage?
     var selectedBreed: String = ""
     var imageUrl: URL?
     var imageView = UIImageView()
-    var isFavorite = false
+    var favoriteManager = FavoriteAPIManager()
+
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateButtonImage()
         scrollView.delegate = self
         scrollView.maximumZoomScale = 4.0
         scrollView.minimumZoomScale = 1.0
         
         navigationItem.title = selectedBreed
         setImageView()
-        
+        //Optional("https://images.dog.ceo/breeds/brabancon/n02112706_1041.jpg")
+
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapHandler(_:)))
         doubleTap.numberOfTapsRequired = 2
         imageView.isUserInteractionEnabled = true
@@ -45,19 +45,22 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func toggleFavorite(_ sender: UIButton) {
-        // 現在のisFavoriteを反転
-        isFavorite.toggle()
-        
-        // ボタンのイメージを更新
-        updateButtonImage()
+    @IBAction func favoriteButton(_ sender: Any) {
+        // URLがnilでないことを確認
+        guard let imageUrlString = dogImage?.imageUrl, let imageUrl = URL(string: imageUrlString) else {
+            print("Image URL is nil")
+            return
+        }
+
+        // 新しいFavoriteオブジェクトを作成
+        let newFavorite = Favorite(breed: selectedBreed, imageURL: imageUrl.absoluteString, isFavorite: true)
+
+        // Favorite.jsonに新しいデータを追加
+        FavoriteAPIManager.addFavorite(newFavorite)
     }
+
     
-    // ボタンのイメージを更新するメソッド
-    func updateButtonImage() {
-        let image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        favoriteButton.setImage(image, for: .normal)
-    }
+    
     
     @objc func doubleTapHandler(_ gesture: UITapGestureRecognizer) {
         let isNavBarHidden = navigationController?.isNavigationBarHidden ?? false

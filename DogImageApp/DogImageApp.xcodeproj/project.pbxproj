@@ -43,7 +43,6 @@
 		BB13024D2B87265D005699B8 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB13024F2B87270B005699B8 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
 		BB1302512B872DC4005699B8 /* FavoriteAPIManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAPIManeger.swift; sourceTree = "<group>"; };
-		BB1302532B872DFF005699B8 /* favorite.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = favorite.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +91,6 @@
 		BB1302302B7F44D4005699B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BB1302532B872DFF005699B8 /* favorite.json */,
 				BB13022E2B7F449F005699B8 /* DogAPIManager.swift */,
 				BB1302512B872DC4005699B8 /* FavoriteAPIManeger.swift */,
 			);
