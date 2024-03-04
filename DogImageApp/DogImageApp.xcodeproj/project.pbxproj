@@ -23,6 +23,10 @@
 		BB13024E2B87265D005699B8 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13024D2B87265D005699B8 /* FavoriteCollectionViewCell.swift */; };
 		BB1302502B87270B005699B8 /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13024F2B87270B005699B8 /* FavoriteCollectionViewController.swift */; };
 		BB1302522B872DC4005699B8 /* FavoriteAPIManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1302512B872DC4005699B8 /* FavoriteAPIManeger.swift */; };
+		BB1302552B8DBB64005699B8 /* favorite.json in Resources */ = {isa = PBXBuildFile; fileRef = BB1302542B8DBB64005699B8 /* favorite.json */; };
+		BB1302572B8EC79A005699B8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1302562B8EC79A005699B8 /* WebViewController.swift */; };
+		BB93E8AF2B955D8100FC4751 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93E8AE2B955D8100FC4751 /* DB.swift */; };
+		BB93E8B12B955FFB00FC4751 /* dbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93E8B02B955FFB00FC4751 /* dbType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		BB13024D2B87265D005699B8 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB13024F2B87270B005699B8 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
 		BB1302512B872DC4005699B8 /* FavoriteAPIManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAPIManeger.swift; sourceTree = "<group>"; };
+		BB1302542B8DBB64005699B8 /* favorite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = favorite.json; path = ../../../../../../Desktop/favorite.json; sourceTree = "<group>"; };
+		BB1302562B8EC79A005699B8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		BB93E8AE2B955D8100FC4751 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		BB93E8B02B955FFB00FC4751 /* dbType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dbType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 		BB13020E2B7F41E5005699B8 = {
 			isa = PBXGroup;
 			children = (
+				BB93E8AE2B955D8100FC4751 /* DB.swift */,
+				BB93E8B02B955FFB00FC4751 /* dbType.swift */,
 				BB1302192B7F41E5005699B8 /* DogImageApp */,
 				BB1302182B7F41E5005699B8 /* Products */,
 			);
@@ -91,6 +101,7 @@
 		BB1302302B7F44D4005699B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BB1302542B8DBB64005699B8 /* favorite.json */,
 				BB13022E2B7F449F005699B8 /* DogAPIManager.swift */,
 				BB1302512B872DC4005699B8 /* FavoriteAPIManeger.swift */,
 			);
@@ -100,6 +111,7 @@
 		BB1302312B7F44F4005699B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BB1302562B8EC79A005699B8 /* WebViewController.swift */,
 				BB13021E2B7F41E5005699B8 /* DogListViewController.swift */,
 				BB13023A2B82EDEA005699B8 /* DogBreedViewController.swift */,
 				BB13024F2B87270B005699B8 /* FavoriteCollectionViewController.swift */,
@@ -177,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1302272B7F41E6005699B8 /* LaunchScreen.storyboard in Resources */,
+				BB1302552B8DBB64005699B8 /* favorite.json in Resources */,
 				BB1302242B7F41E6005699B8 /* Assets.xcassets in Resources */,
 				BB1302222B7F41E5005699B8 /* Main.storyboard in Resources */,
 			);
@@ -199,8 +212,11 @@
 				BB1302502B87270B005699B8 /* FavoriteCollectionViewController.swift in Sources */,
 				BB1302522B872DC4005699B8 /* FavoriteAPIManeger.swift in Sources */,
 				BB13024E2B87265D005699B8 /* FavoriteCollectionViewCell.swift in Sources */,
+				BB93E8B12B955FFB00FC4751 /* dbType.swift in Sources */,
 				BB13024C2B871FBE005699B8 /* TabBarViewController.swift in Sources */,
+				BB1302572B8EC79A005699B8 /* WebViewController.swift in Sources */,
 				BB13023D2B832E1C005699B8 /* type.swift in Sources */,
+				BB93E8AF2B955D8100FC4751 /* DB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

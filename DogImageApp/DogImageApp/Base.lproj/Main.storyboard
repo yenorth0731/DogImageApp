@@ -211,7 +211,7 @@
             <objects>
                 <viewController id="Ml0-MN-gv5" userLabel="second" customClass="DogDetdetailViewViewController" customModule="DogImageApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vB8-zq-F5F">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1D-1D-8aW">
@@ -261,9 +261,25 @@
             </objects>
             <point key="canvasLocation" x="907.63358778625945" y="3.5211267605633805"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="9fc-9M-ZvV">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="Y4r-sf-YtS" customClass="WebViewController" customModule="DogImageApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="WebViewController" id="inz-sp-8Ud">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="iZ9-4b-Xxg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="WebViewController"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SwP-ob-hJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-173.2824427480916" y="690.84507042253529"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SiR-nw-ZZT"/>
+        <segue reference="Yba-DA-APs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>

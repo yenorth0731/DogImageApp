@@ -26,7 +26,6 @@ class DogDetdetailViewViewController: UIViewController, UIScrollViewDelegate {
         
         navigationItem.title = selectedBreed
         setImageView()
-        //Optional("https://images.dog.ceo/breeds/brabancon/n02112706_1041.jpg")
 
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapHandler(_:)))
         doubleTap.numberOfTapsRequired = 2

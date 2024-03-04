@@ -22,8 +22,14 @@ class TabBarViewController: UITabBarController {
         let favoriteViewController = favoriteStoryboard.instantiateViewController(withIdentifier: "FavoriteListViewController") // Storyboard IDに合わせて変更
         favoriteViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite_icon"), selectedImage: nil) // タブのアイコンとタイトルを設定
         
+        // Webのビューコントローラーを取得して設定
+        let webStoryboard = UIStoryboard(name: "Main", bundle: nil) // Storyboard名は適切に変更してください
+        let webViewController = webStoryboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController // Storyboard IDは適切に変更してください
+        webViewController.tabBarItem = UITabBarItem(title: "Web", image: UIImage(named: "web_icon"), selectedImage: nil) // タブのアイコンとタイトルを設定
+
         // UITabBarControllerにビューコントローラーを設定
-        viewControllers = [listViewController, favoriteViewController]
+        viewControllers = [listViewController, favoriteViewController, webViewController]
     }
 
 }
+

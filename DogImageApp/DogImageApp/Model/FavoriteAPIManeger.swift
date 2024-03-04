@@ -1,5 +1,5 @@
 //
-//  FavoriteAPIManeger.swift
+//  FavoriteAPIManager.swift
 //  DogImageApp
 //
 //  Created by spark-01 on 2024/02/22.
@@ -7,13 +7,14 @@
 
 import Foundation
 
-
 struct Favorite: Codable {
     let breed: String
     let imageURL: String
     var isFavorite: Bool
 }
+
 class FavoriteAPIManager {
+    private static let directoryName = "Favorites"
     private static let fileName = "favorite.json"
     
     static func loadFavorites() -> [Favorite]? {
@@ -32,11 +33,9 @@ class FavoriteAPIManager {
         do {
             let data = try JSONEncoder().encode(favorites)
             let fileURL = try getFilePath()
-            if !FileManager.default.fileExists(atPath: fileURL.path) {
-                FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
-            }
             try data.write(to: fileURL)
             print("Favorites saved successfully.")
+            print("File path:", fileURL.path)
         } catch {
             print("Error saving favorites:", error)
         }
@@ -45,16 +44,20 @@ class FavoriteAPIManager {
     static func addFavorite(_ newFavorite: Favorite) {
         if var favorites = loadFavorites() {
             favorites.append(newFavorite)
-            print("Favorite JSON:", try? JSONEncoder().encode(favorites))
             saveFavorites(favorites)
         } else {
-            print("New Favorite JSON:", try? JSONEncoder().encode([newFavorite]))
             saveFavorites([newFavorite])
         }
     }
+    
+    static func getFilePath() throws -> URL {
+        // アプリのドキュメントディレクトリを取得
+        let libraryDirectory = try FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
-    private static func getFilePath() throws -> URL {
-        let documentsDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        return documentsDirectory.appendingPathComponent(fileName)
+        // ファイル名を明示的に指定して追加
+        let fileName = "favorite.json"
+        let fileURL = libraryDirectory.appendingPathComponent(fileName)
+
+        return fileURL
     }
 }
