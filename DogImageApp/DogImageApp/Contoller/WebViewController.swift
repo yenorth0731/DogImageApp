@@ -24,10 +24,12 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let myURL = URL(string: "https://www.yenorth.com")
+        let myURL = URL(string: "https://digital-greens.web.app")
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
     }
+    
+
 }
 
 extension WebViewController: WKUIDelegate {
